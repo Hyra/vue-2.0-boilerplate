@@ -93,11 +93,13 @@ app.get('*', (req, res) => {
 
   renderStream.on('error', err => {
     if (err && err.code === '404') {
-      res.status(404).end('404 | Page Not Found')
+      // res.status(404).end('404 | Page Not Found')
+      res.status(404).render('404.jade')
       return
     }
     // Render Error Page or Redirect
-    res.status(500).end('Internal Error 500')
+    // res.status(500).end('Internal Error 500')
+    res.status(500).render('500.jade')
     console.error(`error during render : ${req.url}`)
     console.error(err)
   })
