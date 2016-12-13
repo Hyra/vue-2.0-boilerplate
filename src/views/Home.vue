@@ -5,6 +5,7 @@
     <h5>List of posts</h5>
     <router-link to="/item/13150144">Item</router-link>
     xx
+    <div v-for="item in myArtists" :key="item.id" :item="item">{{ item.name }}<br /></div>
       <router-view></router-view>
     zz
   </div>
@@ -20,9 +21,7 @@ import Spinner from '../components/Spinner.vue'
 // }
 
 function fetchPosts (store) {
-  return store.dispatch('FETCH_POSTS', {
-    // ids: [store.state.route.params.id]
-  })
+  return store.dispatch('FETCH_POSTS', {})
 }
 
 export default {
@@ -33,7 +32,12 @@ export default {
     //   return this.$store.state.users[this.$route.params.id]
     // }
   },
-  // preFetch: fetchUser,
+  data() {
+    return {
+      myArtists: this.$store.getters.artists
+    }
+  },
+  // preFetch: fetchPosts,
   beforeMount () {
     fetchPosts(this.$store)
   }

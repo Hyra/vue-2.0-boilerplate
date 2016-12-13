@@ -1,5 +1,6 @@
 // this is aliased in webpack config based on server/client build
 import api from 'create-api'
+import axios from 'axios';
 
 // warm the front page cache every 15 min
 if (api.cachedIds) {
@@ -26,6 +27,20 @@ function fetch (child) {
       }, reject)
     })
   }
+}
+
+export const searchByArtistName = () => {
+  // commit('requestSearchResults')
+  return new Promise((resolve, reject) => {
+    axios.get('https://api.spotify.com/v1/search?q=' + 'rage' + '&type=artist&limit=10')
+    .then(function (response) {
+      // return response; //console.log(response);
+      resolve(response.data);
+    })
+    .catch(function (error) {
+      // console.log(error);
+    });
+  });
 }
 
 export function fetchIdsByType (type) {
