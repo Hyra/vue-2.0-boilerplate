@@ -10,6 +10,7 @@ const store = new Vuex.Store({
     itemsPerPage: 20,
     items: {/* [id: number]: Item */},
     users: {/* [id: string]: User */},
+    posts: {/* [id: string]: User */},
     lists: {
       top: [/* number */],
       new: [],
@@ -45,6 +46,16 @@ const store = new Vuex.Store({
       }
     },
 
+    FETCH_POSTS: ({ commit, state }, { ids }) => {
+      // only fetch posts that we don't already have.
+      ids = ids.filter(id => !state.posts[id])
+      if (ids.length) {
+        return fetchPosts(ids).then(posts => commit('SET_POSTS', { posts }))
+      } else {
+        return Promise.resolve()
+      }
+    },
+
     FETCH_USER: ({ commit, state }, { id }) => {
       return state.users[id]
         ? Promise.resolve(state.users[id])
@@ -65,6 +76,14 @@ const store = new Vuex.Store({
       items.forEach(item => {
         if (item) {
           Vue.set(state.items, item.id, item)
+        }
+      })
+    },
+
+    SET_POSTS: (state, { posts }) => {
+      posts.forEach(post => {
+        if (post) {
+          Vue.set(state.posts, post.id, post)
         }
       })
     },

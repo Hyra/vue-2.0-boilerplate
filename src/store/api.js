@@ -42,6 +42,10 @@ export function fetchItems (ids) {
   return Promise.all(ids.map(id => fetchItem(id)))
 }
 
+export function fetchPosts (ids) {
+  return Promise.all(ids.map(id => fetchItem(id)))
+}
+
 export function fetchUser (id) {
   return fetch(`user/${id}`)
 }

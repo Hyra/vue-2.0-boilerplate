@@ -3,21 +3,38 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-import { createListView } from '../views/CreateListView'
-import ItemView from '../views/ItemView.vue'
-import UserView from '../views/UserView.vue'
+import Home from '../views/Home.vue'
+import Item from '../views/Item.vue'
+import Fourohfour from '../views/Fourohfour.vue'
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   scrollBehavior: () => ({ y: 0 }),
-  routes: [
-    { path: '/top/:page(\\d+)?', component: createListView('top') },
-    { path: '/new/:page(\\d+)?', component: createListView('new') },
-    { path: '/show/:page(\\d+)?', component: createListView('show') },
-    { path: '/ask/:page(\\d+)?', component: createListView('ask') },
-    { path: '/job/:page(\\d+)?', component: createListView('job') },
-    { path: '/item/:id(\\d+)', component: ItemView },
-    { path: '/user/:id', component: UserView },
-    { path: '/', redirect: '/top' }
-  ]
+  routes: [{
+      path: '/',
+      component: Home,      
+      beforeEnter (route, redirect, next) {
+        // console.log('index route hook beforeEnter', route)
+        next()
+      },
+      children: [{
+          path: '/item/:id(\\d+)',
+          component: Item
+        }]
+      },
+      {
+        path: '*',
+        component: Fourohfour
+    }]
+  })
+
+router.beforeEach((route, redirect, next) => {
+    // console.log('global hook beforeEach', route)
+    next()
 })
+
+router.afterEach((route, redirect) => {
+    // console.log('global hook afterEach', route)
+})
+
+export default router
