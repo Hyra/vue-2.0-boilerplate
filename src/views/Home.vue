@@ -1,51 +1,23 @@
 <template>
   <div class="user-view">
     <h1>Homepage</h1>
-    <!-- <spinner :show="!user"></spinner> -->
-    <h5>List of posts</h5>
-    <router-link to="/item/13150144">Item</router-link>
-    xx
-    <div v-for="item in myArtists" :key="item.id" :item="item">{{ item.name }}<br /></div>
-      <router-view></router-view>
-    zz
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
   </div>
 </template>
 
 <script>
-import Spinner from '../components/Spinner.vue'
-
-// function fetchUser (store) {
-//   return store.dispatch('FETCH_USER', {
-//     id: store.state.route.params.id
-//   })
-// }
-
-function fetchPosts (store) {
-  return store.dispatch('FETCH_POSTS', {})
-}
-
 export default {
-  name: 'user-view',
-  components: { Spinner },
-  computed: {
-    // user () {
-    //   return this.$store.state.users[this.$route.params.id]
-    // }
-  },
-  data() {
-    return {
-      myArtists: this.$store.getters.artists
-    }
-  },
-  // preFetch: fetchPosts,
-  beforeMount () {
-    fetchPosts(this.$store)
-  }
+  name: 'home-view',
 }
 </script>
 
 <style lang="stylus">
-.user-view
+.home-view
   background-color #fff
   box-sizing border-box
   padding 2em 3em

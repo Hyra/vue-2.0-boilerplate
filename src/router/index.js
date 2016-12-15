@@ -4,7 +4,8 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 import Home from '../views/Home.vue'
-import Item from '../views/Item.vue'
+import ArtistsOverview from '../views/ArtistsOverview.vue'
+import Artist from '../views/Artist.vue'
 import Fourohfour from '../views/Fourohfour.vue'
 
 const router = new Router({
@@ -17,14 +18,19 @@ const router = new Router({
         // console.log('index route hook beforeEnter', route)
         next()
       },
-      children: [{
-          path: '/item/:id(\\d+)',
-          component: Item
-        }]
-      },
-      {
-        path: '*',
-        component: Fourohfour
+    },
+    {
+      path: '/artists',
+      component: ArtistsOverview,
+    },
+    {
+      name: 'artists',
+      path: '/artist/:id',
+      component: Artist
+    },
+    {
+      path: '*',
+      component: Fourohfour
     }]
   })
 
