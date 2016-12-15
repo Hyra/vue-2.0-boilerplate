@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { fetchItems, fetchIdsByType, fetchUser, searchByArtistName } from './api'
+import { fetchItems, fetchIdsByType, fetchUser, searchByArtistName, getArtistById } from './api'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    artists: {}
+    artists: {},
+    currentArtist: {}
   },
 
   actions: {
@@ -19,6 +20,9 @@ const store = new Vuex.Store({
         // return Promise.resolve()
       // }
     },
+    FETCH_ARTIST: ({ commit, state}, {id}) => {
+      return getArtistById(id).then(artist => commit('SET_ARTIST', { artist }));
+    }
   },
 
   mutations: {
@@ -33,11 +37,18 @@ const store = new Vuex.Store({
       })
     },
 
+    SET_ARTIST: (state, { artist }) => {
+      Vue.set(state.currentArtist, artist.id, artist);
+    }
+
   },
 
   getters: {
     artists (state, getters) {
       return state.artists;
+    },
+    currentArtist(state, getters) {
+      return state.currentArtist;
     }
   }
 })

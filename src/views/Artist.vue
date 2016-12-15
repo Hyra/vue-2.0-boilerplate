@@ -1,12 +1,39 @@
 <template>
-  <div class="artist-view">
-    <h1>Artist</h1>
+  <div class="artist-view" v-if="artist">
+  
+    <h1>{{ artist.name }}</h1>
+    <div id="artist-image">
+      <img :src="artist.images[0].url" width="80" />
+    </div>
+
+    <h3>Genres</h3>
+    <ul>
+      <li v-for="genre in artist.genres">
+        {{ genre }}
+      </li>
+    </ul>
+
   </div>
 </template>
 
 <script>
+
+function fetchArtist (store) {
+  return store.dispatch('FETCH_ARTIST', {
+    id: store.state.route.params.id
+  })
+}
+
 export default {
   name: 'artist-view',
+  computed: {
+    artist() {
+      return this.$store.state.currentArtist[this.$route.params.id]
+    } 
+  },
+  beforeMount() {
+    fetchArtist(this.$store)
+  }
 }
 </script>
 

@@ -43,6 +43,19 @@ export const searchByArtistName = () => {
   });
 }
 
+export const getArtistById = (id) => {
+  return new Promise((resolve, reject) => {
+    axios.get(`https://api.spotify.com/v1/artists/${id}`)
+    .then(function (response) {
+      // return response; //console.log(response);
+      resolve(response.data);
+    })
+    .catch(function (error) {
+      // console.log(error);
+    });
+  })
+}
+
 export function fetchIdsByType (type) {
   return api.cachedIds && api.cachedIds[type]
     ? Promise.resolve(api.cachedIds[type])
