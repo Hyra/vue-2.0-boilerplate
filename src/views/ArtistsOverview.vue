@@ -36,7 +36,7 @@ export default {
       myArtists: this.$store.getters.artists
     }
   },
-  preFetch: fetchPosts,
+  // preFetch: fetchPosts,
   beforeMount () {
     fetchPosts(this.$store)
   }

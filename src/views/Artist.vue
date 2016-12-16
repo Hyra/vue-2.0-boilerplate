@@ -1,9 +1,12 @@
 <template>
   <div class="artist-view" v-if="artist">
-  
+
     <h1>{{ artist.name }}</h1>
+
+    <br /><br />
+
     <div id="artist-image">
-      <img :src="artist.images[0].url" width="80" />
+      <img :src="artist.images[0].url" width="120" />
     </div>
 
     <h3>Genres</h3>
@@ -31,24 +34,29 @@ export default {
       return this.$store.state.currentArtist[this.$route.params.id]
     } 
   },
+  // preFetch: fetchArtist,
   beforeMount() {
     fetchArtist(this.$store)
   }
 }
 </script>
 
-<style lang="stylus">
-.artist-view
-  background-color #fff
-  padding 1.8em 2em 1em
-  box-shadow 0 1px 2px rgba(0,0,0,.1)
-  h1
-    display inline
-    font-size 1.5em
-    margin 0
-    margin-right .5em
-  .host, .meta, .meta a
-    color #999
-  .meta a
-    text-decoration underline
+<style lang="sass" scoped>
+.artist-view {
+  background-color: #fff;
+  padding: 1.8em 2em 1em;
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  }
+  h1 {
+    display: inline;
+    font-size: 1.5em;
+    margin: 0;
+    margin-right: .5em;
+  }
+  .host, .meta, .meta a {
+    color: #999;
+  }
+  .meta a {
+    text-decoration: underline;
+  }
 </style>
