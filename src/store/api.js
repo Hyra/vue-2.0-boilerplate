@@ -32,7 +32,7 @@ function fetch (child) {
 export const searchByArtistName = () => {
   // commit('requestSearchResults')
   return new Promise((resolve, reject) => {
-    axios.get('https://api.spotify.com/v1/search?q=' + 'rage' + '&type=artist&limit=10')
+    axios.get('https://api.spotify.com/v1/search?q=' + 'rage' + '&type=artist&limit=50')
     .then(function (response) {
       // return response; //console.log(response);
       resolve(response.data);
