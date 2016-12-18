@@ -71,7 +71,16 @@ app.get('*', (req, res) => {
   const renderStream = renderer.renderToStream(context)
 
   renderStream.once('data', () => {
-    res.write(indexHTML.head)
+    const {
+      title, htmlAttrs, bodyAttrs, link, style, script, noscript, meta
+    } = context.meta.inject()
+    var head = `${meta.text()}
+          ${title.text()}
+          ${link.text()}
+          ${style.text()}
+          ${script.text()}
+          ${noscript.text()}`
+    res.write(indexHTML.head.replace('<!-- META -->', head))
   })
 
   renderStream.on('data', chunk => {

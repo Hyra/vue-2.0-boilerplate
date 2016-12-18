@@ -1,4 +1,5 @@
 import { app, router, store } from './app'
+const meta = app.$meta()
 
 const isDev = process.env.NODE_ENV !== 'production'
 
@@ -12,6 +13,7 @@ export default context => {
 
   // set router's location
   router.push(context.url)
+  context.meta = meta
   const matchedComponents = router.getMatchedComponents()
 
   // no matched routes

@@ -24,6 +24,14 @@ function fetchPosts (store) {
 }
 
 export default {
+  metaInfo: {
+    title: 'My Example App', // set a title
+    titleTemplate: '%s - Yay!', // title is now "My Example App - Yay!"
+    htmlAttrs: {
+      lang: 'en',
+      amp: undefined // "amp" has no value
+    }
+  },
   name: 'user-view',
   components: { Spinner },
   computed: {
