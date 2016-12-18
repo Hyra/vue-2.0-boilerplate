@@ -100,6 +100,8 @@ app.get('*', (req, res) => {
     console.log(`whole request: ${Date.now() - s}ms`)
   })
 
+  renderStream.on('error', (error) => res.status(500).end(`<pre>${error.stack}</pre>`))
+
   renderStream.on('error', err => {
     if (err && err.code === '404') {
       // res.status(404).end('404 | Page Not Found')
