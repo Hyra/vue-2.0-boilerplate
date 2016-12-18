@@ -20,6 +20,21 @@
 <script>
   export default {
   name: 'app',
+  metaInfo: {
+    title: 'Default Title',
+    // all titles will be injected into this template
+    titleTemplate: '%s | My Awesome Webapp',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui' },
+      { name: 'mobile-web-app-capable', content: 'yes' },
+      { name: 'theme-color', content: '#F60' }
+    ],
+    link: [
+      { rel: 'manifest', href: '/manifest.json' },
+      { rel: 'shortcut icon', sizes: '48x48', href: '/logo.png' }
+    ]
+  },
   watch: {
     '$route' (to, from) {
       console.log('a')
