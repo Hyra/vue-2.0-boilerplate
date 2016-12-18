@@ -5,6 +5,18 @@ import router from './router'
 import { sync } from 'vuex-router-sync'
 import * as filters from './filters'
 
+import Axios from 'axios';
+
+Axios.defaults.baseURL = process.env.API_LOCATION;
+Axios.defaults.headers.common.Accept = 'application/json';
+Axios.interceptors.response.use(
+  response => response,
+  (error) => {
+    if (error.response.status === 401) {
+    }
+  });
+Vue.$http = Axios;
+
 // sync the router with the vuex store.
 // this registers `store.state.route`
 sync(store, router)
