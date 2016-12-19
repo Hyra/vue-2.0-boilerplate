@@ -1,7 +1,5 @@
 <template>
   <div class="artists-overview-view">
-    <router-link to="/">&lt; Back home</router-link>
-    <br /><br />
     <h1>Artists Overview</h1>
     <!-- <spinner :show="!user"></spinner> -->
     <div v-for="item in myArtists" :key="item.id" :item="item">
