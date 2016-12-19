@@ -15,7 +15,7 @@ const router = new Router({
   scrollBehavior: () => ({ y: 0 }),
   routes: [{
       path: '/',
-      component: Home,      
+      component: Home,
       beforeEnter (route, redirect, next) {
         // console.log('index route hook beforeEnter', route)
         next()
@@ -26,7 +26,7 @@ const router = new Router({
       component: ArtistsOverview,
     },
     {
-      name: 'artists',
+      name: 'artist',
       path: '/artist/:id',
       component: Artist
     },

@@ -4,7 +4,7 @@
     <!-- <spinner :show="!user"></spinner> -->
     <p>
       <div v-for="item in myArtists" :key="item.id" :item="item">
-        <router-link :to="{ name: 'artists', params: { id: item.id }}">{{ item.name }}</router-link>
+        <router-link :to="{ name: 'artist', params: { id: item.id }}">{{ item.name }}</router-link>
       </div>
     </p>
   </div>
