@@ -3,17 +3,18 @@
     <div class="header">
       <div class="inner">
         <router-link to="/" exact>
-          <!-- <img class="logo" src="http://mindthecode.com/images/badge.png" alt="logo"> -->
+          <img class="logo" src="/public/logo-48.png" alt="logo">
         </router-link>
+        <router-link to="/">Home</router-link>
         <router-link to="/artists">Artists</router-link>
-        <a class="github" href="https://github.com/vuejs/vue-hackernews-2.0" target="_blank">
-          Built with Vue.js
+        <a class="github" href="https://github.com/Hyra/vue-2.0-boilerplate" target="_blank">
+          Vue 2.0 Boilerplate
         </a>
       </div>
     </div>
     <transition name="slide-fade" mode="out-in">
       <router-view class="view"></router-view>
-      </transition>
+    </transition>
   </div>
 </template>
 
@@ -61,7 +62,7 @@ a
   text-decoration none
 
 .header
-  background-color #333
+  background-color #30353b
   position fixed
   z-index 999
   height 55px
