@@ -2,20 +2,16 @@
   <div class="artists-overview-view">
     <h1>Artists Overview</h1>
     <!-- <spinner :show="!user"></spinner> -->
-    <div v-for="item in myArtists" :key="item.id" :item="item">
-      <router-link :to="{ name: 'artists', params: { id: item.id }}">{{ item.name }}</router-link>
-    </div>
+    <p>
+      <div v-for="item in myArtists" :key="item.id" :item="item">
+        <router-link :to="{ name: 'artists', params: { id: item.id }}">{{ item.name }}</router-link>
+      </div>
+    </p>
   </div>
 </template>
 
 <script>
 import Spinner from '../components/Spinner.vue'
-
-// function fetchUser (store) {
-//   return store.dispatch('FETCH_USER', {
-//     id: store.state.route.params.id
-//   })
-// }
 
 function fetchPosts (store) {
   return store.dispatch('FETCH_POSTS', {})
