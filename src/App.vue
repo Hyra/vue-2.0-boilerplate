@@ -33,7 +33,7 @@
     ],
     link: [
       { rel: 'manifest', href: '/manifest.json' },
-      { rel: 'shortcut icon', sizes: '48x48', href: '/logo.png' }
+      { rel: 'shortcut icon', sizes: '48x48', href: '/public/logo-48.png' }
     ]
   },
   watch: {
