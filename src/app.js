@@ -17,6 +17,13 @@ Axios.interceptors.response.use(
   });
 Vue.$http = Axios;
 
+import Raven from 'raven-js'
+import RavenVue from 'raven-js/plugins/vue'
+Raven
+  .config('https://caaf443198e940259fdd6459a6a80edb@sentry.io/53909')
+  .addPlugin(RavenVue, Vue)
+  .install()
+
 // sync the router with the vuex store.
 // this registers `store.state.route`
 sync(store, router)
