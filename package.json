@@ -1,6 +1,6 @@
 {
   "name": "vue-2.0-boilerplate",
-  "description": "An example app using Vue 2.0, Vuex, Vue-Router and SSR",
+  "description": "Vue 2.0 boilerplate for developing your next application. Supports Server Side Rendering (SSR)",
   "author": "Stef van den Ham <stef@mindthecode.com>",
   "private": false,
   "scripts": {
